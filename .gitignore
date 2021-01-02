@@ -21,7 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-src/FIREBASE_CONFIG.js
 .eslintcache
-package-lock.json
 yarn.lock
+
+.firebase/
