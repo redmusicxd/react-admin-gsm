@@ -16,7 +16,7 @@ import {
     TextField,
     LinearProgress
 } from "react-admin";
-import { useMediaQuery, makeStyles } from '@material-ui/core';
+import { useMediaQuery } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 
 const ToPay = ({record}) => <Typography variant="body2">{record && new Intl.NumberFormat('ro-RO', { style: 'currency', currency: 'RON' }).format(record.cost - record.paid)}</Typography>

@@ -20,8 +20,6 @@ import {
     Filter,
     NumberField,
     NumberInput,
-    useQuery,
-    DateInput
 } from "react-admin";
 import RichTextInput from "ra-input-rich-text";
 import { useMediaQuery } from '@material-ui/core';

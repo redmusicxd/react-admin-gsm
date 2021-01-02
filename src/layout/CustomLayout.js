@@ -1,5 +1,5 @@
 import { Layout, Sidebar } from 'react-admin';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Routes from './Breadcrumbs'
 import React from 'react';
 import { darkTheme, lightTheme } from './themes';
