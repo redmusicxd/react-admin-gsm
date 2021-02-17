@@ -40,7 +40,6 @@ const myprovider = {
             previousData: saleDate.data
           })
         }).catch((err) => {
-          console.error(err);
           dataProvider.create('sales',{
             data:{
               date: new Date(),
@@ -60,23 +59,22 @@ const myprovider = {
   },
   create: async (resource, params) => {
     const customParams = {...params, data:{...params.data, lastPay: params.data.paid}};
-    console.log(params);
     if(params.data.paid && params.data.cost){
-      let saleDate = await dataProvider.getOne('sales', {
-        id: new Date().toISOString().match("(.*)T")[1]
-      })
-      if(saleDate.data){
-        dataProvider.update('sales', {
-          data: {
-            ...saleDate.data,
-            // totalValue: saleDate.data.totalValue + params.data.paid,
-            // pendingSales: saleDate.data.pendingSales + (params.data.cost - params.data.paid),
-            orders: [...saleDate.data.orders, params.data.id]
-          },
-          id: saleDate.data.id,
-          previousData: saleDate.data
+      try {
+        let saleDate = await dataProvider.getOne('sales', {
+          id: new Date().toISOString().match("(.*)T")[1]
         })
-      }else{
+          dataProvider.update('sales', {
+            data: {
+              ...saleDate.data,
+              // totalValue: saleDate.data.totalValue + params.data.paid,
+              // pendingSales: saleDate.data.pendingSales + (params.data.cost - params.data.paid),
+              orders: [...saleDate.data.orders, params.data.id]
+            },
+            id: saleDate.data.id,
+            previousData: saleDate.data
+          })
+      }catch (error) {
         dataProvider.create('sales',{
           data:{
             date: new Date(),
@@ -91,7 +89,6 @@ const myprovider = {
     return dataProvider.create(resource, customParams);
   },
   delete: async (resource, params) => {
-    console.log(params);
     let saleDate = await dataProvider.getOne('sales', {
       id: new Date().toISOString().match("(.*)T")[1]
     })

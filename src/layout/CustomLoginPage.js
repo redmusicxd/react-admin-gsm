@@ -21,10 +21,9 @@ const SignInScreen = () => <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth=
 
 const CustomLoginForm = props => (
   <div>
-    {/* <div style={{fontFamily: "monospace", marginLeft: '15px'}}>
-      <p>Username: test@example.com</p>
-      <p>Password: password</p>
-    </div> */}
+    <div style={{fontFamily: "sans-serif", marginLeft: '15px'}}>
+      <p>demo@test.com / demo123</p>
+    </div>
     <LoginForm {...props} />
     {/* <ForgotPasswordButton {...props} /> */}
     <SignInScreen />
